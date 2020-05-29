@@ -7,25 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" color="dark">
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12" *ngFor="let new of noticias; let i = index">
-        <ion-card color="dark">
-          <ion-card-header>
-            <ion-card-subtitle>
-              <span class="text-primary">{{i+1}}. </span>
-              <span class="noticia-source-name">{{new.source.name}}</span>
-              </ion-card-subtitle>
-            <ion-card-title class="noticia-title">{{new.title}}</ion-card-title>
-          </ion-card-header>
-          <ion-img *ngIf="new.urlToImage" [src]="new.urlToImage"></ion-img>
-          <ion-card-content>
-            {{new.description}}
-          </ion-card-content>
-        </ion-card>
 
-      </ion-col>
-    </ion-row>
+  <app-noticias [noticias]="noticias"></app-noticias>
 
-  </ion-grid>
 </ion-content>
