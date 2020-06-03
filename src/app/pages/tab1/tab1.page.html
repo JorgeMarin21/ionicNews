@@ -9,5 +9,9 @@
 <ion-content [fullscreen]="true" color="dark">
 
   <app-noticias [noticias]="noticias"></app-noticias>
+  <ion-infinite-scroll threshold="150px" [disabled]="hide" position="bottom" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more news...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>

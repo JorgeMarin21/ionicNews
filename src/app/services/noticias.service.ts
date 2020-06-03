@@ -12,6 +12,11 @@ const headers = new HttpHeaders({
   providedIn: 'root'
 })
 export class NoticiasService {
+
+  headlinesPage = 0;
+  categoriaActual = '';
+  categoriaPage = 0;
+
 // <T> Especifica el tipo de dato
   private ejecutarQuery<T>( query: string){
     query = apiUrl + query;
@@ -20,13 +25,20 @@ export class NoticiasService {
   constructor(private http: HttpClient) { }
 
   getTopHeadLines(){
-    // tslint:disable-next-line: max-line-length
-    // return this.http.get<RespuestaTopHeadLines>(`http://newsapi.org/v2/top-headlines?country=co&apiKey=9958687c32b94893844ede5d23a755b4`);
-    return this.ejecutarQuery<RespuestaTopHeadLines>(`/top-headlines?country=co`);
+    this.headlinesPage++;
+    // return this.http.get<RespuestaTopHeadLines>
+    // (`http://newsapi.org/v2/top-headlines?country=co&apiKey=9958687c32b94893844ede5d23a755b4`);
+    return this.ejecutarQuery<RespuestaTopHeadLines>(`/top-headlines?country=co&page=${this.headlinesPage}`);
   }
   getCategories(cat: string){
-    // tslint:disable-next-line: max-line-length
-    // return this.http.get<RespuestaTopHeadLines>(`http://newsapi.org/v2/top-headlines?country=co&category=business&apiKey=9958687c32b94893844ede5d23a755b4`);
-    return this.ejecutarQuery<RespuestaTopHeadLines>(`/top-headlines?country=co&category=${cat}`);
+    if (this.categoriaActual === cat){
+      this.categoriaPage++;
+    } else {
+      this.categoriaPage = 1;
+      this.categoriaActual = cat;
+    }
+    // return this.http.get<RespuestaTopHeadLines>
+    // (`http://newsapi.org/v2/top-headlines?country=co&category=business&apiKey=9958687c32b94893844ede5d23a755b4`);
+    return this.ejecutarQuery<RespuestaTopHeadLines>(`/top-headlines?country=co&category=${cat}&page=${this.categoriaPage}`);
   }
 }
