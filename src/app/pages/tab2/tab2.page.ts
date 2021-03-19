@@ -20,6 +20,15 @@ export class Tab2Page implements OnInit {
     'technology',
     'entertainment'
   ];
+  catTrans: any[] = [
+    'general',
+    'economía',
+    'ciencia',
+    'deportes',
+    'salud',
+    'tecnología',
+    'entretenimiento'
+  ];
   loading: any;
   category: any;
   hide = false;

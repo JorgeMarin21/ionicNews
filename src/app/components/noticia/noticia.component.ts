@@ -15,6 +15,7 @@ import { DataLocalService } from '../../services/data-local.service';
 export class NoticiaComponent implements OnInit {
   @Input() new: Article;
   @Input() indice: number;
+  @Input() enFavoritos;
   constructor(
     private inAppBrowser: InAppBrowser,
     public actionSheetController: ActionSheetController,
@@ -50,13 +51,14 @@ export class NoticiaComponent implements OnInit {
             this.new.url
           );
         }
-      },  {
-        text: 'Favorito',
-        icon: 'heart',
+      },  
+      {
+        text: (!this.enFavoritos) ? 'Favorito' : 'Eliminar Favorito',
+        icon: (!this.enFavoritos) ? 'heart' : 'trash',
         cssClass: 'action-dark',
         handler: () => {
           console.log('Favorite clicked');
-          this.dataLocalService.guardarNoticia(this.new);
+          (!this.enFavoritos) ? this.dataLocalService.guardarNoticia(this.new) :  this.dataLocalService.borrarNoticia(this.new);
         }
       }, {
         text: 'Cancel',

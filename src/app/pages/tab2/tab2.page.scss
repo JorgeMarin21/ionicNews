@@ -1,8 +1,16 @@
 ion-segment-button{
     background-color: var(--ion-color-dark) !important;
-    color: white !important;
+    color: black !important;
 }
 
 .segment-button-checked {
     color: var(--ion-color-primary) !important;
+}
+
+.padding-header {
+    padding: 0rem 0.2rem;
+}
+
+.margin-toolbar {
+    padding: 0.4rem 0rem;
 }
