@@ -1,7 +1,8 @@
 {
   "name": "Noticias",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
